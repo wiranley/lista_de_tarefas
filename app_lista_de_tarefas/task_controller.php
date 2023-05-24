@@ -1,6 +1,6 @@
 <?php
-    require '../../../app_lista_de_tarefas/task.model.php';
-    require '../../../app_lista_de_tarefas/task.service.php';
+    require '../../../app_lista_de_tarefas/task_model.php';
+    require '../../../app_lista_de_tarefas/task_service.php';
     require '../../../app_lista_de_tarefas/conecta.php';
 
 	$acao = isset($_GET['acao']) ? $_GET['acao'] : $acao;
@@ -26,6 +26,20 @@
 		$tarefas = $tarefaService->recuperar();
 
 
+
+	} else if ($acao == 'atualizar') {
+		
+		$tarefa = new Tarefa();
+		$tarefa->__set('id', $_POST['id'])
+				->__set('tarefa', $_POST['tarefa']);
+
+		$conexao = new Conexao();
+	
+		$tarefaService = new TarefaService($conexao, $tarefa);
+		if($tarefaService->atualizar()){
+			header('Location: todas_tarefas.php');
+		};
+		
 
 	}
 

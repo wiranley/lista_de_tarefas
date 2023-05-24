@@ -1,7 +1,7 @@
 <?php
 
 	$acao = 'recuperar';
-	require './task.controller.php';
+	require './task_controller.php';
 
 	/*
 	echo '<pre>';
@@ -23,7 +23,7 @@
 
 			function editar(id, txt_tarefa) {
 				let form = document.createElement('form');
-				form.action = '#';
+				form.action = 'task_controller.php?acao=atualizar';
 				form.method = 'post';
 				form.className = 'row';
 
